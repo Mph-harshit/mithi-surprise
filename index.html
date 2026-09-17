@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mithi ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Georgia,serif;background:radial-gradient(circle at top,#ffd6e7,#ff8fb8 45%,#7d3155);color:#fff;display:flex;justify-content:center;align-items:center;overflow:hidden}
+.card{width:min(92%,430px);min-height:620px;padding:35px 25px;border-radius:30px;background:rgba(255,255,255,.13);backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(0,0,0,.3);text-align:center;position:relative;z-index:2}
+h1{font-size:42px;margin:15px 0 8px;text-shadow:0 3px 12px #7d3155}
+h2{font-size:28px;margin:15px 0}
+p{font-size:20px;line-height:1.55}
+.small{font-size:15px;opacity:.9}
+button{border:0;border-radius:999px;padding:15px 25px;font-size:17px;font-weight:bold;background:#fff;color:#c33d70;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.2);margin-top:18px}
+button:active{transform:scale(.96)}
+.gift{font-size:120px;margin:30px 0 10px;animation:bob 1.7s infinite ease-in-out;cursor:pointer}
+@keyframes bob{50%{transform:translateY(-10px) rotate(2deg)}}
+.heart{position:fixed;font-size:22px;animation:float 7s linear infinite;bottom:-30px;opacity:.75}
+@keyframes float{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+.hidden{display:none}
+.line{font-size:25px;min-height:170px;display:flex;align-items:center;justify-content:center;padding:15px}
+.counter{font-size:14px;opacity:.8}
+.envelope{font-size:105px;margin:25px}
+.fade{animation:fade .6s}
+@keyframes fade{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+</style>
+</head>
+<body>
+<div class="card">
+
+<section id="p1">
+  <div class="small">A little surprise, made with love...</div>
+  <h1>For Mithi ❤️</h1>
+  <div class="gift" onclick="openGift()">🎁</div>
+  <p>There is something inside this little gift that I wanted you to see.</p>
+  <button onclick="openGift()">Open Your Gift 💝</button>
+</section>
+
+<section id="p2" class="hidden">
+  <div class="gift">💐</div>
+  <h2>Surprise! ✨</h2>
+  <p>I couldn't put my feelings into just one message...</p>
+  <p>So I made you <b>10 little reminders</b> instead. ❤️</p>
+  <button onclick="showLines()">There's more →</button>
+</section>
+
+<section id="p3" class="hidden">
+  <div class="counter" id="counter">1 / 10</div>
+  <div class="line fade" id="line"></div>
+  <button onclick="nextLine()">Next Surprise 💗</button>
+</section>
+
+<section id="p4" class="hidden">
+  <div class="envelope">💌</div>
+  <h2>One Last Thing...</h2>
+  <p>Mithi, no fancy website can really explain how special you are to me.</p>
+  <p><b>Thank you for being you. ❤️</b></p>
+  <p>— Ritik</p>
+  <button onclick="celebrate()">Tap for one final surprise ✨</button>
+</section>
+
+</div>
+<script>
+const lines=[
+"You make even ordinary days feel a little more beautiful. ❤️",
+"Somehow, your smile has a way of making everything better. 🥹",
+"If I could keep one moment forever, I'd choose a happy moment with you. 💗",
+"You are one of my favourite reasons to smile. 😊",
+"Being able to call you Mithi is already pretty special. 🫶",
+"I hope you always remember how precious you are to me. 🌷",
+"Even when I don't say it, you're often somewhere in my thoughts. ❤️",
+"Life feels a little sweeter when you're part of it. ✨",
+"If this little website made you smile, then my mission is complete. 😌💕",
+"And finally... Mithi, you are truly special to me. ❤️ — Ritik"
+];
+let i=0;
+function hideAll(){document.querySelectorAll("section").forEach(x=>x.classList.add("hidden"))}
+function openGift(){hideAll();document.getElementById("p2").classList.remove("hidden")}
+function showLines(){hideAll();document.getElementById("p3").classList.remove("hidden");render()}
+function render(){
+ document.getElementById("line").className="line fade";
+ document.getElementById("line").textContent=lines[i];
+ document.getElementById("counter").textContent=(i+1)+" / 10";
+}
+function nextLine(){
+ if(i<lines.length-1){i++;render()}
+ else{hideAll();document.getElementById("p4").classList.remove("hidden")}
+}
+function celebrate(){
+ for(let n=0;n<35;n++){
+  const h=document.createElement("div");h.className="heart";h.textContent=["❤️","💗","💕","💖","✨"][Math.floor(Math.random()*5)];
+  h.style.left=Math.random()*100+"vw";h.style.animationDuration=(3+Math.random()*4)+"s";h.style.fontSize=(18+Math.random()*22)+"px";
+  document.body.appendChild(h);setTimeout(()=>h.remove(),7500);
+ }
+ alert("Mithi ❤️ You are loved. — Ritik");
+}
+for(let n=0;n<18;n++){
+ const h=document.createElement("div");h.className="heart";h.textContent="♡";
+ h.style.left=Math.random()*100+"vw";h.style.animationDelay=Math.random()*7+"s";
+ document.body.appendChild(h);
+}
+</script>
+</body>
+</html>
